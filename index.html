@@ -3,252 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>תוכנית עסקית: יעד 20,000 ש"ח בחודש ביוטיוב</title>
-    <!-- Tailwind CSS -->
+    <title>מרכז שליטה: ערוץ יוטיוב AI פיננסי</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Assistant', sans-serif;
-        }
+        body { font-family: 'Assistant', sans-serif; background-color: #fafaf9; }
+        .chart-container { position: relative; width: 100%; max-width: 650px; margin-left: auto; margin-right: auto; height: 320px; max-height: 400px; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen">
+<body class="text-slate-900 pb-12">
 
-    <div class="max-w-6xl mx-auto px-4 py-8">
-        <!-- Header -->
-        <header class="text-center mb-12">
-            <span class="bg-indigo-100 text-indigo-800 text-sm font-semibold px-4 py-1.5 rounded-full">תוכנית אסטרטגית מבוססת דאטה</span>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mt-4 mb-3">הדרך ל-20,000 ש"ח בחודש מיוטיוב</h1>
-            <p class="text-lg text-slate-600 max-w-2xl mx-auto">כמה זמן זה באמת ייקח, מהן אבני הדרך, ואיך מייצרים מנועי צמיחה מרובים כדי להגיע ליעד מהר יותר.</p>
-        </header>
+    <!-- Navigation Header -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">AI</div>
+                    <span class="font-bold text-xl tracking-tight">CommandCenter</span>
+                </div>
+                <div class="hidden md:flex gap-6 text-sm font-semibold">
+                    <button onclick="showTab('strategy')" class="hover:text-indigo-600 transition">אסטרטגיה</button>
+                    <button onclick="showTab('production')" class="hover:text-indigo-600 transition">פס ייצור</button>
+                    <button onclick="showTab('finance')" class="hover:text-indigo-600 transition">פיננסים</button>
+                    <button onclick="showTab('setup')" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">הפעלה בנייד</button>
+                </div>
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="p-2">☰</button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 p-4 space-y-4 font-semibold text-center">
+            <button onclick="showTab('strategy'); toggleMobileMenu()" class="block w-full">אסטרטגיה</button>
+            <button onclick="showTab('production'); toggleMobileMenu()" class="block w-full">פס ייצור</button>
+            <button onclick="showTab('finance'); toggleMobileMenu()" class="block w-full">פיננסים</button>
+            <button onclick="showTab('setup'); toggleMobileMenu()" class="block w-full text-indigo-600">הפעלה בנייד</button>
+        </div>
+    </nav>
 
-        <!-- Interactive Calculator Section -->
-        <section class="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-12 border border-slate-100">
-            <h2 class="text-2xl font-bold text-slate-900 mb-2">📊 סימולטור הכנסות אינטראקטיבי</h2>
-            <p class="text-slate-500 mb-8">שחק עם המדדים כדי להבין כמה צפיות או חסויות נדרשות כדי להגיע ליעד של 20,000 ₪.</p>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Inputs -->
+    <main class="max-w-6xl mx-auto px-4 mt-8">
+        
+        <!-- SECTION: STRATEGY -->
+        <div id="strategy" class="tab-content active">
+            <div class="mb-8">
+                <h2 class="text-3xl font-extrabold mb-2">אסטרטגיית תוכן: פיננסים וכלכלה</h2>
+                <p class="text-slate-600">הנישה שנבחרה מתמקדת בניתוח מהלכים כלכליים של חברות ענק (Business Breakdowns) ותרגום אקטואליה "בגובה העיניים".</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="text-3xl mb-4">🏆</div>
+                    <h3 class="font-bold text-lg mb-2">הבידול שלך</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">לא עוד טיפים ממוחזרים על חיסכון. אתה "המספר" שמפרק את מלחמת השבבים או את האסטרטגיה של קוסטקו לסיפור מתח מרתק.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="text-3xl mb-4">📺</div>
+                    <h3 class="font-bold text-lg mb-2">פורמט 8 הדקות</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">מבנה של 5 פרקים: הוק מותח, רקע היסטורי, נקודת המפנה, הניתוח העמוק והחידוש הכלכלי, והנעה לפעולה.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="text-3xl mb-4">📈</div>
+                    <h3 class="font-bold text-lg mb-2">מנוע הצמיחה</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">שימוש בשורטס להבאת קהל חדש, וסרטונים ארוכים לבניית סמכות והכנסה גבוהה מפרסומות.</p>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-amber-50 p-6 rounded-2xl border border-amber-100">
+                <h4 class="font-bold text-amber-900 mb-2">💡 דוגמה לסיפור מנצח:</h4>
+                <p class="text-amber-800 text-sm italic">"איך TSMC הטיוואנית הפכה לחברה שכל העולם תלוי בה? (ומה יקרה למניה שלכם אם סין תפלוש?)"</p>
+            </div>
+        </div>
+
+        <!-- SECTION: PRODUCTION -->
+        <div id="production" class="tab-content">
+            <div class="mb-8 text-center">
+                <h2 class="text-3xl font-extrabold mb-2">פס הייצור: מבינה מלאכותית למותג חי</h2>
+                <p class="text-slate-600">כיצד להפוך טקסט לסרטון מקצועי עם פרזנטור AI קבוע.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div class="space-y-6">
-                    <!-- Views Input -->
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <label class="font-semibold text-slate-700">צפיות חודשיות (סרטונים ארוכים):</label>
-                            <span id="views-val" class="font-bold text-indigo-600 text-lg">250,000 צפיות</span>
+                    <div class="flex gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center text-xl">✍️</div>
+                        <div>
+                            <h4 class="font-bold">שלב 1: תסריט (LLM)</h4>
+                            <p class="text-xs text-slate-500">שימוש ב-Gemini/ChatGPT לכתיבת סיפור מותח מבוסס עובדות כלכליות.</p>
                         </div>
-                        <input type="range" id="views-slider" min="10000" max="1000000" step="10000" value="250000" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
                     </div>
-
-                    <!-- RPM Input -->
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <label class="font-semibold text-slate-700">גובה RPM (רווח ל-1,000 צפיות בש"ח):</label>
-                            <span id="rpm-val" class="font-bold text-indigo-600 text-lg">35 ₪</span>
+                    <div class="flex gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center text-xl">🎙️</div>
+                        <div>
+                            <h4 class="font-bold">שלב 2: קול (ElevenLabs)</h4>
+                            <p class="text-xs text-slate-500">המרת הטקסט לקול אנושי, עמוק וסמכותי בעברית.</p>
                         </div>
-                        <input type="range" id="rpm-slider" min="15" max="100" step="5" value="35" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
-                        <p class="text-xs text-slate-400 mt-1">בנישת הפיננסים, ה-RPM הממוצע נע בין 25 ₪ ל-80 ₪ (תלוי אם הקהל ישראלי או גלובלי).</p>
                     </div>
-
-                    <!-- Sponsorships Input -->
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <label class="font-semibold text-slate-700">הכנסה חודשית מחסויות ושותפים:</label>
-                            <span id="sponsorship-val" class="font-bold text-indigo-600 text-lg">4,000 ₪</span>
+                    <div class="flex gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center text-xl">👤</div>
+                        <div>
+                            <h4 class="font-bold">שלב 3: פרזנטור (HeyGen / D-ID)</h4>
+                            <p class="text-xs text-slate-500">הנפשת האוואטר המקצועי שיצרת ב-Midjourney.</p>
                         </div>
-                        <input type="range" id="sponsorship-slider" min="0" max="15000" step="500" value="4000" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
-                        <p class="text-xs text-slate-400 mt-1">חסויות מותג, הפניית לקוחות, מכירת מוצרים דיגיטליים קטנים (כמו קבצי מעקב תקציב).</p>
+                    </div>
+                    <div class="flex gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center text-xl">✂️</div>
+                        <div>
+                            <h4 class="font-bold">שלב 4: עריכה (CapCut)</h4>
+                            <p class="text-xs text-slate-500">שילוב הדיבוב עם סרטוני רקע (B-roll) וכתוביות דינמיות.</p>
+                        </div>
                     </div>
                 </div>
+                <div class="bg-slate-900 rounded-3xl p-8 text-white aspect-square flex flex-col justify-center items-center text-center">
+                    <div class="w-32 h-32 bg-slate-800 rounded-full border-4 border-indigo-500 mb-6 flex items-center justify-center text-4xl">🤖</div>
+                    <h3 class="text-2xl font-bold mb-4">"יוסי האנליסט"</h3>
+                    <p class="text-slate-400 text-sm max-w-xs">הפרזנטור שלך הוא הפנים של המותג. הוא מופיע רק בפתיחה ובסיום כדי לשמור על קצב מהיר ועניין גבוה.</p>
+                    <div class="mt-6 px-4 py-2 bg-indigo-600 rounded-full text-xs font-bold uppercase tracking-widest">Brand Persona</div>
+                </div>
+            </div>
+        </div>
 
-                <!-- Results Output Card -->
-                <div class="bg-slate-900 text-white rounded-xl p-6 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-semibold text-slate-400 mb-4">חישוב הכנסה חודשית מוערכת:</h3>
-                        <div class="space-y-3">
-                            <div class="flex justify-between border-b border-slate-800 pb-2">
-                                <span class="text-slate-400">הכנסה מפרסומות (AdSense):</span>
-                                <span id="adsense-result" class="font-bold text-emerald-400">8,750 ₪</span>
-                            </div>
-                            <div class="flex justify-between border-b border-slate-800 pb-2">
-                                <span class="text-slate-400">הכנסה מחסויות/תוספות:</span>
-                                <span id="sponsorships-result" class="font-bold text-emerald-400">4,000 ₪</span>
-                            </div>
-                        </div>
+        <!-- SECTION: FINANCE -->
+        <div id="finance" class="tab-content">
+            <div class="mb-8">
+                <h2 class="text-3xl font-extrabold mb-2">הדרך ל-20,000 ₪ בחודש</h2>
+                <p class="text-slate-600">ניתוח הכנסות צפויות ושילוב מנועי צמיחה (פרסומות + חסויות).</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+                <div class="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 col-span-1 lg:col-span-2">
+                    <h3 class="font-bold text-emerald-900 mb-4">תחזית הכנסה מצטברת (שנה ראשונה)</h3>
+                    <div class="chart-container">
+                        <canvas id="incomeChart"></canvas>
                     </div>
-
-                    <div class="mt-8">
-                        <div class="text-sm text-slate-400">סה"כ הכנסה חודשית:</div>
-                        <div class="flex items-baseline gap-2">
-                            <span id="total-result" class="text-4xl md:text-5xl font-extrabold text-white">12,750 ₪</span>
-                            <span class="text-lg text-slate-400">/ לחודש</span>
+                </div>
+                <div class="bg-indigo-900 text-white p-6 rounded-2xl flex flex-col justify-center">
+                    <h3 class="text-indigo-200 text-sm font-bold uppercase mb-4 tracking-wider">יעד חודשי סופי</h3>
+                    <div class="text-5xl font-black mb-2">20,000 ₪</div>
+                    <p class="text-indigo-300 text-sm">התפלגות מומלצת: 40% AdSense, 60% חסויות ושותפים.</p>
+                    <div class="mt-8 space-y-3">
+                        <div class="flex justify-between text-xs border-b border-indigo-800 pb-2">
+                            <span>עלות הפקה חודשית:</span>
+                            <span class="font-bold text-red-400">~250 ₪</span>
                         </div>
-                        
-                        <!-- Progress Bar to 20K -->
-                        <div class="mt-4">
-                            <div class="flex justify-between text-xs text-slate-400 mb-1">
-                                <span>התקדמות ליעד (20,000 ₪)</span>
-                                <span id="progress-percent">63.7%</span>
-                            </div>
-                            <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
-                                <div id="progress-bar" class="bg-indigo-500 h-full transition-all duration-300" style="width: 63.7%;"></div>
-                            </div>
+                        <div class="flex justify-between text-xs border-b border-indigo-800 pb-2">
+                            <span>זמן הפקה ממוצע:</span>
+                            <span class="font-bold">4-6 שעות לסרטון</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Timeline / Phase Section -->
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center">⏱️ מפת הדרכים הריאלית: כמה זמן זה ייקח?</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
-                <!-- Phase 1 -->
-                <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm relative">
-                    <div class="absolute -top-4 right-5 w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">1</div>
-                    <h3 class="font-bold text-lg text-slate-900 mt-2">חודשים 1-3</h3>
-                    <p class="text-sm font-semibold text-indigo-600 mb-2">שלב ה"סנדבוקס" וההקמה</p>
-                    <ul class="text-xs text-slate-500 space-y-1.5 list-disc list-inside">
-                        <li>העלאת 2 סרטונים בשבוע בקביעות.</li>
-                        <li>למידה וייעול כלי ה-AI.</li>
-                        <li>הגעה ל-500 הרשומים הראשונים.</li>
-                    </ul>
-                    <div class="mt-4 pt-3 border-t border-slate-50 text-xs font-bold text-slate-400">
-                        צפי הכנסה: <span class="text-slate-900">0 ₪</span>
-                    </div>
+        <!-- SECTION: SETUP -->
+        <div id="setup" class="tab-content">
+            <div class="mb-8">
+                <h2 class="text-3xl font-extrabold mb-2">הפעלה בנייד דרך GitHub</h2>
+                <p class="text-slate-600">כך תהפוך את הקוד שקיבלת לאתר פעיל שתוכל להראות מהטלפון.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center">
+                    <span class="font-bold text-slate-700">📋 צעדי ביצוע מהירים</span>
+                    <span class="text-xs text-indigo-600 font-bold uppercase">Guide</span>
                 </div>
-
-                <!-- Phase 2 -->
-                <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm relative">
-                    <div class="absolute -top-4 right-5 w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">2</div>
-                    <h3 class="font-bold text-lg text-slate-900 mt-2">חודשים 4-6</h3>
-                    <p class="text-sm font-semibold text-indigo-600 mb-2">מוניטיזציה ואופטימיזציה</p>
-                    <ul class="text-xs text-slate-500 space-y-1.5 list-disc list-inside">
-                        <li>כניסה לתוכנית השותפים של יוטיוב.</li>
-                        <li>הסרטונים הישנים צוברים "צפיות פסיביות".</li>
-                        <li>הגעה ל-2,000-5,000 מנויים.</li>
-                    </ul>
-                    <div class="mt-4 pt-3 border-t border-slate-50 text-xs font-bold text-slate-400">
-                        צפי הכנסה: <span class="text-emerald-600">500 - 2,500 ₪</span>
+                <div class="p-6 space-y-6">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 bg-slate-900 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                        <div>
+                            <h4 class="font-bold">צור מאגר (Repository)</h4>
+                            <p class="text-sm text-slate-500">כנס ל-GitHub, צור מאגר חדש בשם "my-channel" והגדר אותו כ-Public.</p>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Phase 3 -->
-                <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm relative">
-                    <div class="absolute -top-4 right-5 w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">3</div>
-                    <h3 class="font-bold text-lg text-slate-900 mt-2">חודשים 7-12</h3>
-                    <p class="text-sm font-semibold text-indigo-600 mb-2">אפקט הריבית דריבית</p>
-                    <ul class="text-xs text-slate-500 space-y-1.5 list-disc list-inside">
-                        <li>הערוץ מכיל כבר 80+ סרטונים.</li>
-                        <li>התחלת עבודה עם חברות פיננסים (ספונסרשיפ).</li>
-                        <li>בניית רשימת תפוצה/קהילה קטנה.</li>
-                    </ul>
-                    <div class="mt-4 pt-3 border-t border-slate-50 text-xs font-bold text-slate-400">
-                        צפי הכנסה: <span class="text-emerald-600">3,000 - 10,000 ₪</span>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 bg-slate-900 text-white rounded-full flex items-center justify-center font-bold">2</div>
+                        <div>
+                            <h4 class="font-bold">הוסף קובץ index.html</h4>
+                            <p class="text-sm text-slate-500">הדבק את הקוד שקיבלת לתוך קובץ חדש בשם index.html ושמור (Commit).</p>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Phase 4 -->
-                <div class="bg-white rounded-xl p-5 border border-indigo-200 shadow-md relative">
-                    <div class="absolute -top-4 right-5 w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">4</div>
-                    <h3 class="font-bold text-lg text-slate-900 mt-2">חודשים 12-18+</h3>
-                    <p class="text-sm font-semibold text-indigo-600 mb-2">הגעה ליעד פול-טיים</p>
-                    <ul class="text-xs text-slate-500 space-y-1.5 list-disc list-inside">
-                        <li>קהל נאמן שמחכה לניתוחים שלך.</li>
-                        <li>3 מנועי הכנסה: פרסומות, חסויות, ושותפים.</li>
-                        <li>שליטה מלאה ומהירה בהפקת ה-AI.</li>
-                    </ul>
-                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-bold text-indigo-600">
-                        צפי הכנסה: <span class="text-emerald-600 font-extrabold">15,000 - 25,000 ₪+</span>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 bg-slate-900 text-white rounded-full flex items-center justify-center font-bold">3</div>
+                        <div>
+                            <h4 class="font-bold">הפעל את GitHub Pages</h4>
+                            <p class="text-sm text-slate-500">בהגדרות המאגר (Settings), תחת Pages, בחר בענף Main ולחץ Save.</p>
+                        </div>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 flex items-center gap-4">
+                        <span class="text-2xl">🔗</span>
+                        <div>
+                            <p class="text-xs text-indigo-900 font-bold uppercase">הקישור שלך יהיה:</p>
+                            <code class="text-sm text-indigo-700">https://[username].github.io/my-channel/</code>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </main>
 
-        <!-- Insights -->
-        <section class="bg-indigo-900 text-white rounded-2xl p-6 md:p-8">
-            <h2 class="text-xl md:text-2xl font-bold mb-4">💡 3 חוקי זהב כדי לקצר את הדרך ליעד</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-                <div>
-                    <h3 class="font-bold text-indigo-300 mb-1">1. אל תסתמך רק על פרסומות</h3>
-                    <p class="text-indigo-100">יוטיוברים שמרוויחים סכומים כאלה משלבים חסויות. חברה פיננסית אחת שתיתן לך חסות של 1,500 ₪ לסרטון (כפול 4 סרטונים בחודש) סוגרת לך 6,000 ₪ באפס מאמץ נוסף.</p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-indigo-300 mb-1">2. השקע ב-CTR (שיעור לחיצה)</h3>
-                    <p class="text-indigo-100">התוכן שלך יכול להיות מושלם, אבל אם הכותרת והתמונה הממוזערת (Thumbnail) לא יגרמו לאנשים ללחוץ, יוטיוב לא תפיץ את הסרטון. השקע 50% מהזמן שלך בעיצוב קליקבלי וישר.</p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-indigo-300 mb-1">3. חוק הריבית דריבית של יוטיוב</h3>
-                    <p class="text-indigo-100">סרטון שהעלית היום ימשיך להביא לך צפיות (וכסף) גם בעוד שנה. ככל שיש לך יותר סרטונים באוויר, ההכנסה הופכת ליציבה, פסיבית ובטוחה יותר.</p>
-                </div>
-            </div>
-        </section>
-    </div>
+    <footer class="mt-20 text-center text-slate-400 text-xs">
+        &copy; 2026 AI Command Center - YouTube Financial Strategy Plan
+    </footer>
 
-    <!-- Interactive script -->
     <script>
-        const viewsSlider = document.getElementById('views-slider');
-        const rpmSlider = document.getElementById('rpm-slider');
-        const sponsorshipSlider = document.getElementById('sponsorship-slider');
-
-        const viewsVal = document.getElementById('views-val');
-        const rpmVal = document.getElementById('rpm-val');
-        const sponsorshipVal = document.getElementById('sponsorship-val');
-
-        const adsenseResult = document.getElementById('adsense-result');
-        const sponsorshipsResult = document.getElementById('sponsorships-result');
-        const totalResult = document.getElementById('total-result');
-        const progressPercent = document.getElementById('progress-percent');
-        const progressBar = document.getElementById('progress-bar');
-
-        function formatNumber(num) {
-            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        // Tab Navigation Logic
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            
+            // Re-render chart if finance tab is selected
+            if (tabId === 'finance') {
+                renderChart();
+            }
         }
 
-        function calculateRevenue() {
-            const views = parseInt(viewsSlider.value);
-            const rpm = parseInt(rpmSlider.value);
-            const sponsorship = parseInt(sponsorshipSlider.value);
-
-            // Update text
-            viewsVal.innerText = formatNumber(views) + " צפיות";
-            rpmVal.innerText = rpm + " ₪";
-            sponsorshipVal.innerText = formatNumber(sponsorship) + " ₪";
-
-            // Calculations
-            const adsenseRev = (views / 1000) * rpm;
-            const totalRev = adsenseRev + sponsorship;
-
-            // Target percentage
-            const target = 20000;
-            const percentage = Math.min((totalRev / target) * 100, 100).toFixed(1);
-
-            // Update UI elements
-            adsenseResult.innerText = formatNumber(adsenseRev.toFixed(0)) + " ₪";
-            sponsorshipsResult.innerText = formatNumber(sponsorship.toFixed(0)) + " ₪";
-            totalResult.innerText = formatNumber(totalRev.toFixed(0)) + " ₪";
-            progressPercent.innerText = percentage + "%";
-            progressBar.style.width = percentage + "%";
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         }
 
-        viewsSlider.addEventListener('input', calculateRevenue);
-        rpmSlider.addEventListener('input', calculateRevenue);
-        sponsorshipSlider.addEventListener('input', calculateRevenue);
+        // Chart.js Logic
+        let chartInstance = null;
+        function renderChart() {
+            const ctx = document.getElementById('incomeChart').getContext('2d');
+            if (chartInstance) chartInstance.destroy();
 
-        // Initial run
-        calculateRevenue();
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['חודש 1', 'חודש 3', 'חודש 6', 'חודש 9', 'חודש 12', 'חודש 18'],
+                    datasets: [{
+                        label: 'הכנסה חודשית בש"ח',
+                        data: [0, 500, 2500, 8000, 15000, 22000],
+                        borderColor: '#4f46e5',
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 3,
+                        pointBackgroundColor: '#4f46e5'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#f1f5f9' },
+                            ticks: { callback: value => value + ' ₪' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize first chart render
+        window.onload = () => {
+            // Pre-load logic if needed
+        };
     </script>
 </body>
 </html>
 ```eof
 
-### סיכום קצר של מחשבי הדרכים ליעד:
+<!-- Chosen Palette: Slate & Indigo Professional -->
+<!-- Application Structure Plan: האפליקציה בנויה כמרכז שליטה (Command Center) המחולק לארבעה אזורים אסטרטגיים: 1. אסטרטגיית תוכן (מה ליצור), 2. פס ייצור (איך להשתמש ב-AI), 3. מודל פיננסי (חיזוי רווחים), ו-4. מדריך הגדרה טכני (GitHub). המבנה נבחר כדי להפוך את כמות המידע הגדולה שדיברנו עליה לתוכנית פעולה ליניארית ונוחה למעקב מהטלפון או מהמחשב. -->
+<!-- Visualization & Content Choices:
+1. Income Projection (Line Chart): שימוש ב-Chart.js להצגת גרף צמיחה אקספוננציאלי הממחיש את אפקט הריבית דריבית של יוטיוב.
+2. Production Pipeline (Icon Cards): שימוש בכרטיסים ויזואליים לפירוט כלי ה-AI הנדרשים לכל שלב.
+3. Mobile Setup Guide (Numbered List): מדריך טכני מפושט להפעלת הקוד ב-GitHub Pages כפי שהמשתמש ביקש.
+4. Brand Persona Section (Dark Mode Card): הדגשת חשיבות הפרזנטור כחלק מרכזי במותג.
+-->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
-1. **הצד המתמטי (הסימולטור):** כדי להגיע ל-20,000 ש"ח, אתה לא צריך מיליוני צפיות. בנישה הפיננסית, שילוב של כ-250,000 צפיות חודשיות (מכל הסרטונים שלך יחד בערוץ) עם מנוע חסויות בסיסי של כ-4,000 ש"ח בחודש – מביא אותך ישירות אל היעד.
-2. **לוחות זמנים ריאליים:** זה לא קורה ביום אחד. שנה ראשונה (12 חודשים) היא חיונית לבניית בסיס הסרטונים והצפיות הפסיביות. החל מהחודש ה-12, כשהערוץ מבוסס, השגת היעד הופכת לריאלית ויציבה מאוד.
+כדי שתוכל להתחיל מיד, הקובץ שייצרתי למעלה הוא **"Command Center"** אישי. הוא מסכם את כל הניתוח הכלכלי שלנו, את כלי ה-AI שדיברנו עליהם, ואת מפת הדרכים הפיננסית. 
 
-פירטתי עבורך את כל שלבי הדרך כדי שתוכל להתחיל לפעול בצורה ממוקדת וחכמה. מה דעתך על התוכנית הזו?
+**מה עכשיו?**
+1. העתק את הקוד מהתיבה למעלה.
+2. בצע את השלבים שמופיעים בלשונית **"הפעלה בנייד"** בתוך האפליקציה (באמצעות המדריך לגיטאהב).
+3. לאחר מכן, יהיה לך אתר פרטי בטלפון שבו תוכל להיעזר בכל פעם שתתיישב לעבוד על הסרטון הבא שלך.
+
+בהצלחה בבניית האימפריה הכלכלית שלך ביוטיוב! אני כאן לכל שאלה נוספת.
